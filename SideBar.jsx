@@ -1,27 +1,15 @@
-import React, { useState } from 'react';
-import { Menu } from 'lucide-react';
+import React from 'react';
 
-const SideBar = ({ onShowDashboard, onShowAssets, onShowAbout }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const SideBar = ({ onShowDashboard, onShowAssets, onShowAbout, isOpen }) => {
   return (
-    <>
-      <div className="sm:hidden p-2">
-        <button onClick={() => setIsOpen(!isOpen)}>
-          <Menu />
-        </button>
-      </div>
-      <div className={`sm:block ${isOpen ? 'block' : 'hidden'} w-64 sm:w-64 h-full sm:h-screen bg-white shadow-md p-4 absolute sm:relative z-10`}>
-        <nav className="space-y-4">
-          <h3 className='text-xl font-bold text-blue-600 bg-blue-100 px-4 py-2 text-center'>Menu</h3>
-          <button className='w-full bg-gray-200 hover:bg-blue-400 text-black py-2 px-6'onClick={onShowDashboard}>Dashboard</button>
-          <br />
-          <button className='w-full bg-gray-200 hover:bg-blue-400 text-black py-2 px-6' onClick={onShowAssets}>Assets</button>
-          <br />
-          <button onClick={onShowAbout} className='w-full bg-gray-200 hover:bg-blue-400 text-black py-2 px-6'>About</button>
-        </nav>
-      </div>
-    </>
+    <div className={`bg-white shadow-md h-full fixed top-0 left-0 z-20 transition-transform duration-300 ${isOpen ? 'translate-x-0 w-[200px]' : '-translate-x-full w-0'}`}> 
+      <nav className="space-y-4 p-4">
+        <h3 className='text-xl text-blue-600'>Menu</h3>
+        <button onClick={onShowDashboard} className='text-md block text-left'>Dashboard</button>
+        <button onClick={onShowAssets} className='text-md block text-left'>Assets</button>
+        <button onClick={onShowAbout} className='text-sm block text-left'>About</button>
+      </nav>
+    </div>
   );
 };
 
