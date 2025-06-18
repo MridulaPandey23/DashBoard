@@ -1,8 +1,9 @@
+// components/Navbar.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 
-const Navbar = ({ onShowAccount, onToggleSidebar }) => {
+const Navbar = ({ onToggleSidebar, onShowAccount }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
@@ -17,13 +18,11 @@ const Navbar = ({ onShowAccount, onToggleSidebar }) => {
     <>
       <div className="w-full h-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md flex justify-between items-center px-4 sm:px-6">
         <div className="flex items-center gap-4">
-          {/* Sidebar Toggle Button - now visible on all screen sizes */}
-          <button onClick={onToggleSidebar}>
-            <Menu className="w-6 h-6 text-white" />
+          <button onClick={onToggleSidebar} className="text-white focus:outline-none">
+            <Menu />
           </button>
           <h1 className="text-xl font-bold">Dashboard</h1>
         </div>
-
         <div className="flex items-center gap-4">
           <button
             onClick={() => setShowModal(true)}
